@@ -1,20 +1,4 @@
-version: '3.8'
-
 services:
-  caddy:
-    image: caddy:2-alpine
-    container_name: portfolio-caddy
-    restart: always
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - caddy_data:/data
-      - caddy_config:/config
-    command: caddy reverse-proxy --from leo-malgonne.fr,www.leo-malgonne.fr --to portfolio-frontend:80
-    depends_on:
-      - frontend
-
   backend:
     build:
       context: ./backend
@@ -33,11 +17,7 @@ services:
       dockerfile: Dockerfile
     container_name: portfolio-frontend
     restart: always
-    expose:
-      - "80"
+    ports:
+      - "8080:80"
     depends_on:
       - backend
-
-volumes:
-  caddy_data:
-  caddy_config:
