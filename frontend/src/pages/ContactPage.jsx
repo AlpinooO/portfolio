@@ -1,11 +1,31 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "", website: "" });
   const [status, setStatus] = useState("idle");
+  const [notification, setNotification] = useState(null);
+  const notificationTimerRef = useRef(null);
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
+
+  const showNotification = (message) => {
+    setNotification(message);
+    if (notificationTimerRef.current) {
+      clearTimeout(notificationTimerRef.current);
+    }
+    notificationTimerRef.current = window.setTimeout(() => {
+      setNotification(null);
+    }, 4500);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (notificationTimerRef.current) {
+        clearTimeout(notificationTimerRef.current);
+      }
+    };
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,6 +39,7 @@ export default function Contact() {
       if (!res.ok) throw new Error();
       setStatus("sent");
       setForm({ name: "", email: "", message: "", website: "" });
+      showNotification("Message envoyé avec succès.");
     } catch {
       setStatus("error");
     }
@@ -99,15 +120,21 @@ export default function Contact() {
           {status === "sending" ? "Envoi…" : "Envoyer"}
         </button>
 
-        {status === "sent" && (
-          <p className="text-cyan text-sm font-mono">Message envoyé ✓</p>
-        )}
         {status === "error" && (
           <p className="text-amber text-sm font-mono">
             Une erreur est survenue, réessaie plus tard.
           </p>
         )}
       </form>
+
+      {notification && (
+        <div className="fixed bottom-5 right-5 z-50 max-w-sm rounded-md border border-cyan/30 bg-ink/95 px-4 py-3 shadow-2xl backdrop-blur-sm">
+          <p className="font-mono text-xs uppercase tracking-wide text-cyan mb-1">
+            Succès
+          </p>
+          <p className="text-sm text-offwhite">{notification}</p>
+        </div>
+      )}
     </section>
   );
 }
