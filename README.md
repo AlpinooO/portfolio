@@ -8,7 +8,7 @@ Architecture fullstack : API Node.js/Express + Frontend React (Vite + Tailwind).
 ```bash
 npm install
 npm run install:all
-cp backend/.env.example backend/.env   # puis renseigne EMAIL_USER / EMAIL_PASS si tu veux le formulaire de contact fonctionnel
+cp backend/.env.example backend/.env   # puis renseigne RESEND_API_KEY (+ CONTACT_TO_EMAIL si besoin) pour le formulaire de contact
 npm run dev
 ```
 Ça lance le backend (http://localhost:3001) et le frontend (http://localhost:5173) en même temps, dans le même terminal.
@@ -47,7 +47,7 @@ Le site tourne sur http://localhost:5173 (le proxy Vite redirige automatiquement
 - [ ] `backend/data/nexus-machina.json` — ajuster si besoin (succès, compétences forgées)
 - [ ] `frontend/src/components/Footer.jsx` — remplacer les liens GitHub/LinkedIn par les tiens
 - [ ] `frontend/public/CV_Leo_Malgonne.pdf` — ajouter ton CV (voir `frontend/public/README_CV.txt`)
-- [ ] `backend/.env` — configurer Gmail (mot de passe d'application, pas ton mot de passe normal) pour le formulaire de contact
+- [ ] `backend/.env` — configurer l'API mail (RESEND_API_KEY, RESEND_FROM_EMAIL si nécessaire, et éventuellement CONTACT_TO_EMAIL) pour le formulaire de contact
 
 ## Déploiement (gratuit)
 

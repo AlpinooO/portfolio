@@ -1,5 +1,4 @@
 import { Router } from "express";
-import nodemailer from "nodemailer";
 
 const router = Router();
 const contactAttempts = new Map();
@@ -58,27 +57,34 @@ router.post("/", async (req, res) => {
     return res.status(400).json({ error: "Adresse email invalide" });
   }
 
-  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+  const toEmail = process.env.CONTACT_TO_EMAIL || process.env.EMAIL_USER;
+  const fromEmail = process.env.RESEND_FROM_EMAIL || "Portfolio <onboarding@resend.dev>";
+  if (!process.env.RESEND_API_KEY || !toEmail) {
     return res.status(500).json({ error: "Configuration email manquante" });
   }
 
 
   try {
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
       },
+      body: JSON.stringify({
+        from: fromEmail,
+        to: [toEmail],
+        replyTo: email,
+        subject: `Nouveau message portfolio de ${name.slice(0, 80)}`,
+        text: `Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+      }),
     });
 
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER,
-      replyTo: email,
-      subject: `Nouveau message portfolio de ${name.slice(0, 80)}`,
-      text: message,
-    });
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("Resend error:", errorText);
+      return res.status(500).json({ error: "Envoi impossible pour le moment" });
+    }
 
     res.json({ success: true });
   } catch (err) {

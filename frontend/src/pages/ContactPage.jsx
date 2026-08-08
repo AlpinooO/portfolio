@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import ColorBends from "../components/ColorBends.jsx";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "", website: "" });
@@ -46,95 +47,117 @@ export default function Contact() {
   };
 
   return (
-    <section className="px-6 pt-32 pb-24 max-w-3xl mx-auto">
-      <p className="index-tag mb-2">POUR ME CONTACTER</p>
-      <h1 className="text-3xl sm:text-4xl font-semibold mb-10">
-        Interessé ? <span className="display-italic text-cyan">Contactez-moi !</span>
-      </h1>
+    <section className="relative overflow-hidden px-6 pt-32 pb-24 min-h-screen">
+      <div className="absolute inset-0 pointer-events-none opacity-90">
+        <ColorBends
+          className="w-full h-full"
+          colors={['#ff5c7a', '#8a5cff', '#00ffd1']}
+          rotation={90}
+          speed={0.2}
+          scale={1}
+          frequency={1}
+          warpStrength={1}
+          mouseInfluence={1}
+          noise={0.12}
+          parallax={0.5}
+          iterations={1}
+          intensity={1.25}
+          bandWidth={6}
+          transparent
+          style={{ position: 'absolute', inset: 0 }}
+        />
+      </div>
 
-      <form onSubmit={handleSubmit} className="max-w-md space-y-4">
-        <div>
-          <label className="font-mono text-xs text-muted block mb-1.5" htmlFor="name">
-            Nom
-          </label>
-          <input
-            id="name"
-            name="name"
-            required
-            maxLength={100}
-            autoComplete="name"
-            value={form.name}
-            onChange={handleChange}
-            className="w-full bg-surface border border-surface2 rounded-md px-4 py-2.5 focus:outline-none focus:border-cyan"
-          />
-        </div>
-        <div>
-          <label className="font-mono text-xs text-muted block mb-1.5" htmlFor="email">
-            Email
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            maxLength={254}
-            autoComplete="email"
-            value={form.email}
-            onChange={handleChange}
-            className="w-full bg-surface border border-surface2 rounded-md px-4 py-2.5 focus:outline-none focus:border-cyan"
-          />
-        </div>
-        <div>
-          <label className="font-mono text-xs text-muted block mb-1.5" htmlFor="message">
-            Message
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            required
-            rows={4}
-            maxLength={4000}
-            value={form.message}
-            onChange={handleChange}
-            className="w-full bg-surface border border-surface2 rounded-md px-4 py-2.5 focus:outline-none focus:border-cyan resize-none"
-          />
-        </div>
+      <div className="relative z-10 max-w-3xl mx-auto">
+        <p className="index-tag mb-2">POUR ME CONTACTER</p>
+        <h1 className="text-3xl sm:text-4xl font-semibold mb-10">
+          Interessé ? <span className="display-italic text-cyan">Contactez-moi !</span>
+        </h1>
 
-        <div className="sr-only" aria-hidden="true">
-          <label htmlFor="website">Website</label>
-          <input
-            id="website"
-            name="website"
-            tabIndex={-1}
-            autoComplete="off"
-            value={form.website}
-            onChange={handleChange}
-          />
-        </div>
+        <form onSubmit={handleSubmit} className="max-w-md space-y-4">
+          <div>
+            <label className="font-mono text-xs text-muted block mb-1.5" htmlFor="name">
+              Nom
+            </label>
+            <input
+              id="name"
+              name="name"
+              required
+              maxLength={100}
+              autoComplete="name"
+              value={form.name}
+              onChange={handleChange}
+              className="w-full bg-surface border border-surface2 rounded-md px-4 py-2.5 focus:outline-none focus:border-cyan"
+            />
+          </div>
+          <div>
+            <label className="font-mono text-xs text-muted block mb-1.5" htmlFor="email">
+              Email
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              maxLength={254}
+              autoComplete="email"
+              value={form.email}
+              onChange={handleChange}
+              className="w-full bg-surface border border-surface2 rounded-md px-4 py-2.5 focus:outline-none focus:border-cyan"
+            />
+          </div>
+          <div>
+            <label className="font-mono text-xs text-muted block mb-1.5" htmlFor="message">
+              Message
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              rows={4}
+              maxLength={4000}
+              value={form.message}
+              onChange={handleChange}
+              className="w-full bg-surface border border-surface2 rounded-md px-4 py-2.5 focus:outline-none focus:border-cyan resize-none"
+            />
+          </div>
 
-        <button
-          type="submit"
-          disabled={status === "sending"}
-          className="font-mono text-sm px-5 py-3 rounded-md bg-cyan text-ink font-medium hover:bg-cyan/90 transition-colors disabled:opacity-50"
-        >
-          {status === "sending" ? "Envoi…" : "Envoyer"}
-        </button>
+          <div className="sr-only" aria-hidden="true">
+            <label htmlFor="website">Website</label>
+            <input
+              id="website"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              value={form.website}
+              onChange={handleChange}
+            />
+          </div>
 
-        {status === "error" && (
-          <p className="text-amber text-sm font-mono">
-            Une erreur est survenue, réessaie plus tard.
-          </p>
+          <button
+            type="submit"
+            disabled={status === "sending"}
+            className="font-mono text-sm px-5 py-3 rounded-md bg-cyan text-ink font-medium hover:bg-cyan/90 transition-colors disabled:opacity-50"
+          >
+            {status === "sending" ? "Envoi…" : "Envoyer"}
+          </button>
+
+          {status === "error" && (
+            <p className="text-amber text-sm font-mono">
+              Une erreur est survenue, réessaie plus tard.
+            </p>
+          )}
+        </form>
+
+        {notification && (
+          <div className="fixed bottom-5 right-5 z-50 max-w-sm rounded-md border border-cyan/30 bg-ink/95 px-4 py-3 shadow-2xl backdrop-blur-sm">
+            <p className="font-mono text-xs uppercase tracking-wide text-cyan mb-1">
+              Succès
+            </p>
+            <p className="text-sm text-offwhite">{notification}</p>
+          </div>
         )}
-      </form>
-
-      {notification && (
-        <div className="fixed bottom-5 right-5 z-50 max-w-sm rounded-md border border-cyan/30 bg-ink/95 px-4 py-3 shadow-2xl backdrop-blur-sm">
-          <p className="font-mono text-xs uppercase tracking-wide text-cyan mb-1">
-            Succès
-          </p>
-          <p className="text-sm text-offwhite">{notification}</p>
-        </div>
-      )}
+      </div>
     </section>
   );
 }
