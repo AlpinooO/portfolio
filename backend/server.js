@@ -9,15 +9,13 @@ import efreiMotorsportRouter from "./routes/efreiMotorsport.js";
 import experienceRouter from "./routes/experience.js";
 
 const app = express();
-const PORT = process.env.PORT || 3001;
-const allowedOrigins = (process.env.CORS_ORIGIN || "http://localhost:5173")
-  .split(",")
-  .map((origin) => origin.trim())
-  .filter(Boolean);
+const PORT = process.env.PORT || 5000;
 
+// Configuration de la sécurité de base
 app.disable("x-powered-by");
 app.set("trust proxy", 1);
 
+// Middleware de sécurité (headers HTTP)
 app.use((req, res, next) => {
   res.setHeader("X-Content-Type-Options", "nosniff");
   res.setHeader("X-Frame-Options", "DENY");
@@ -26,24 +24,32 @@ app.use((req, res, next) => {
   next();
 });
 
+const allowedOrigins = (process.env.CORS_ORIGIN || "http://localhost,http://localhost:5173")
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
 app.use(
   cors({
     origin(origin, callback) {
       if (!origin || allowedOrigins.includes(origin)) {
         return callback(null, true);
       }
-
       return callback(new Error("Origine non autorisée"));
     },
     methods: ["GET", "POST"],
   })
 );
+
+// Body parser
 app.use(express.json({ limit: "20kb" }));
 
+// Route de santé (Healthcheck)
 app.get("/api/health", (_req, res) => {
   res.json({ status: "ok" });
 });
 
+// Routes API
 app.use("/api/projects", projectsRouter);
 app.use("/api/contact", contactRouter);
 app.use("/api/cv", cvRouter);
@@ -52,5 +58,5 @@ app.use("/api/efrei-motorsport", efreiMotorsportRouter);
 app.use("/api/experience", experienceRouter);
 
 app.listen(PORT, () => {
-  console.log(`API disponible sur http://localhost:${PORT}`);
+  console.log(`API disponible sur le port ${PORT}`);
 });
