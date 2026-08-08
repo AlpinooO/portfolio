@@ -1,0 +1,40 @@
+{
+  "title": "Nexus Machina",
+  "tagline": "Serveur communautaire NeoForge — 500+ mods",
+  "period": "2025 — en cours",
+  "stack": ["NeoForge 1.21.1", "KubeJS", "JavaScript", "Gestion de serveur Minecraft"],
+  "description": "Conception, administration et optimisation d'un serveur Minecraft modé communautaire regroupant plus de 500 mods, avec une équipe de joueurs actifs au quotidien.",
+  "stats": [
+    { "label": "Mods installés", "value": "500+" },
+    { "label": "Version", "value": "NeoForge 1.21.1" },
+    { "label": "Statut", "value": "En cours de test" }
+  ],
+  "achievements": [
+    {
+      "title": "Diagnostic de tick-lag",
+      "description": "Identification et résolution d'une erreur NBT provenant du mod Stoneholm provoquant des ralentissements serveur, via analyse de logs et de profils de performance."
+    },
+    {
+      "title": "Scripting KubeJS",
+      "description": "Développement de scripts pour équilibrer la difficulté des boss du mod Cataclysm, ajustant leurs statistiques selon la progression des joueurs."
+    },
+    {
+      "title": "Résolution de conflits de mods",
+      "description": "Diagnostic et correction de multiples incompatibilités entre mods (bibliothèques partagées, dépendances manquantes) pour stabiliser le pack complet."
+    },
+    {
+      "title": "Equilibrage du gameplay et du craft",
+      "description": "Ajustement des mécaniques et de craft dans les différents mods pour améliorer l'expérience de jeu et la progression des joueurs, en collaboration avec la communauté via des formulaires de feedback."
+    },
+    {
+      "title": "Gestion en équipe",
+      "description": "Mise en place d'un tableau Kanban pour organiser les tâches de l'équipe de modérateurs et développeurs, suivi des bugs et des demandes de la communauté."
+    }
+  ],
+  "crafting_skills": [
+    "Diagnostic de performance serveur",
+    "Scripting / automatisation (KubeJS)",
+    "Gestion de dépendances complexes",
+    "Gestion de communauté"
+  ]
+}

@@ -1,0 +1,35 @@
+[
+  {
+    "company": "Levaral",
+    "role": "Stage Développeur Full Stack",
+    "period": "Février 2026 – Juin 2026",
+    "stack": ["WordPress", "Node.js", "SQL", "Docker"],
+    "missions": [
+      "Développement d'un site vitrine WordPress et d'un site intranet en Node.js",
+      "Phase de préproduction : design UI/UX, recherche de composants",
+      "Communication directe avec le client et coordination d'équipe"
+    ]
+  },
+  {
+    "company": "Paris Gastronomy Distribution",
+    "role": "Stage Développeur Web et Gestionnaire Base de Données",
+    "period": "Avril 2025 – Juin 2025",
+    "stack": ["Airtable", "SQL", "Javascript", "Support IT"],
+    "missions": [
+            "Gestion de la base de données.",
+      "Support IT.",
+      "Polyvalence et capacité à s’adapter rapidement à différents outils et technologies.",
+      "Communication avec les fournisseurs"
+    ]
+  },
+  {
+    "company": "Travaux Rénovation Services",
+    "role": "Stage Développeur Web",
+    "period": "Mai 2024 – Juillet 2024",
+    "stack": ["HTML", "CSS", "JavaScript"],
+    "missions": [
+      "Communication professionnelle avec l’équipe",
+      "Travail autonome avec suivi régulier des consignes"
+    ]
+  }
+]

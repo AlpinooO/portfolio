@@ -1,0 +1,24 @@
+{
+  "title": "Efrei Motorsport",
+  "tagline": "Association étudiante — sport automobile",
+  "category": "Projet associatif étudiant",
+  "period": "1 an",
+  "description": "Association étudiante que j'ai créée et portée pendant un an au sein de l'EFREI, autour de ma passion pour le sport automobile. Un projet qui m'a permis de développer des compétences complémentaires à mon cursus technique : gestion de projet, leadership, communication et organisation d'événements.",
+  "highlights": [
+    {
+      "title": "Création de l'association",
+      "description": "Structuration de l'association de A à Z et recrutement des premiers membres."
+    },
+    {
+      "title": "Animation de communauté",
+      "description": "Animation d'une communauté d'étudiants passionnés de sport automobile."
+    },
+    {
+      "title": "Organisation d'événements",
+      "description": "Watch party d'un grand prix de F1, sortie cinéma pour le film F1 en collaboration avec une autre association étudiante."
+    }
+  ],
+  "skills": ["Gestion de projet", "Leadership", "Administration communautaire", "Communication"],
+  "logo": "/images/EM6.png",
+  "mascot": "/images/chouettefin.png"
+}

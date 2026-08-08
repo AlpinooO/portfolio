@@ -1,0 +1,17 @@
+{
+  "name": "portfolio-backend",
+  "version": "1.0.0",
+  "description": "API du portfolio de Léo Malgonne",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "nodemailer": "^6.9.14",
+    "dotenv": "^16.4.5"
+  }
+}

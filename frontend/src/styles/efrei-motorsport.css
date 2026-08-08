@@ -1,0 +1,103 @@
+.em-theme {
+  --em-asphalt: #17171a;
+  --em-asphalt-light: #232326;
+  --em-carbon: #1e1e22;
+  --em-white: #f2f1ec;
+  --em-blue: #2f6fd1;
+  --em-blue-dark: #1a3f8f;
+  --em-muted: #8a8a8f;
+
+  font-family: "Titillium Web", sans-serif;
+  color: var(--em-white);
+  background-color: var(--em-asphalt);
+  background-image:
+    radial-gradient(circle at 20% 0%, rgba(47,111,209,0.10) 0%, transparent 45%),
+    repeating-linear-gradient(135deg, rgba(255,255,255,0.015) 0 2px, transparent 2px 6px);
+  min-height: 100vh;
+}
+
+.em-heading {
+  font-family: "Racing Sans One", sans-serif;
+  letter-spacing: 0.02em;
+  color: var(--em-white);
+  text-transform: uppercase;
+}
+
+.em-heading .accent {
+  color: var(--em-blue);
+}
+
+.em-checkered {
+  height: 14px;
+  background-image: repeating-conic-gradient(
+    var(--em-white) 0% 25%, var(--em-asphalt) 0% 50%
+  );
+  background-size: 14px 14px;
+  opacity: 0.9;
+}
+
+.em-panel {
+  background: var(--em-carbon);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-left: 4px solid var(--em-blue);
+  border-radius: 4px;
+}
+
+.em-badge {
+  font-family: "Racing Sans One", sans-serif;
+  background: var(--em-blue);
+  color: var(--em-white);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--em-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.em-tag {
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--em-blue);
+  color: var(--em-white);
+  padding: 4px 12px;
+  border-radius: 2px;
+  display: inline-block;
+  transform: skewX(-8deg);
+}
+
+.em-tag > span {
+  display: inline-block;
+  transform: skewX(8deg);
+}
+
+.em-skill {
+  font-family: "Titillium Web", sans-serif;
+  font-size: 0.8rem;
+  background: var(--em-asphalt-light);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--em-muted);
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.em-logo-frame {
+  background: var(--em-white);
+  border-radius: 16px;
+  border: 3px solid var(--em-blue);
+}
+
+.em-back-link {
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 600;
+  color: var(--em-muted);
+}
+
+.em-back-link:hover {
+  color: var(--em-blue);
+}

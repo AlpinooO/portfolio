@@ -1,0 +1,78 @@
+[
+  {
+    "id": "levaral-intranet",
+    "title": "Intranet de gestion RH",
+    "category": "Stage",
+    "period": "Février 2026 – Juin 2026",
+    "stack": ["Node.js", "Express", "SQL", "Docker", "Github"],
+    "description": "Conception et développement d'un intranet interne pour la gestion du personnel, en binôme avec l'équipe produit et en lien direct avec le client.",
+    "highlights": [
+      "Développement back-end avec Node.js/Express",
+      "Modélisation et gestion de la base de données",
+      "Conteneurisation avec Docker",
+      "Phase de préproduction : UI/UX, choix des composants"
+    ],
+    "link": null,
+    "repo": null
+  },
+  {
+    "id": "Chase the light",
+    "title": "Chase the light",
+    "category": "GameJam",
+    "period": "2026",
+    "stack": ["C#", "Unity", "Github"],
+    "description": "Jeux réalisé en groupe pendant 48h lors d'une GameJam, avec pour objectif de créer un jeu en 2D avec un gameplay basé sur la lumière et l'ombre.",
+    "highlights": [
+      "Gameplay basé sur la lumière et l'ombre, avec des mécaniques de puzzle et de plateforme",
+      "Développeur fonctionnalités et intégration des assets graphiques et sonores"
+    ],
+    "link": "https://rubnk.itch.io/chase-the-light",
+    "repo": null
+  },
+  {
+    "id": "Projet Divers Helper",
+    "title": "Divers Helper",
+    "category": "Projet Académique",
+    "period": "2024-2025",
+    "stack": ["Node.js", "Express", "MongoDB", "React", "Tailwind CSS", "Docker", "Github"],
+    "description": "Ensemble de site réalisé en groupe au cours de l'année scolaire 2024-2025.",
+    "highlights": [
+      "1er site: Création d'un site communautaire de Helldivers 2, avec gestion de compte, forum et API de la carte du jeu.",
+      "2ème site: Creation d'un site de gestion de projet, avec gestion de compte, création de projets et tâches, et suivi de l'avancement.",
+      "3ème site: Création d'un WebGame type Space Invaders, avec gestion de compte, scores et classement."
+    ],
+    "link": null,
+    "repo": "https://github.com/AlpinooO/efrei_b2_challengeWeb_Helldiver-s-2"
+  },
+  {
+    "id": "AeroClick",
+    "title": "AeroClick",
+    "category": "Projet Académique",
+    "period": "2026",
+    "stack": ["NodeJS", "Express", "MySQL", "React", "Docker", "bcrypt", "JWT", "Github Actions"],
+    "description": "Application web de salle de gym virtuelle avec mini-jeux interactifs réalisé en groupe au cours de l'année scolaire 2025-2026.",
+    "highlights": [
+      "Gestion du Github et mise en place d'un workflow CI/CD avec Github Actions",
+      "Base de donnée MySQL avec gestion des utilisateurs et des scores",
+      "Debug et optimisation du code pour améliorer les performances et la sécurité de l'application",
+      "Pipeline de déploiement sur un serveur distant avec Docker"
+    ],
+    "link": null,
+    "repo": "https://github.com/AlpinooO/Aero-Clic"
+  },
+    {
+    "id": "Pong3dJS",
+    "title": "Pong 3dJS",
+    "category": "Projet Académique",
+    "period": "2025",
+    "stack": ["JavaScript", "Three.js", "HTML", "CSS"],
+    "description": "Application web permettant de jouer au jeux Pong en 3d",
+    "highlights": [
+      "Projet réalisé seul, avec pour objectif de créer un jeu Pong en 3D en utilisant la bibliothèque Three.js",
+      "Gestion de la physique du jeu, des collisions et de l'affichage en 3D",
+      "Optimisation du code pour améliorer les performances et la fluidité du jeu"
+    ],
+    "link": null,
+    "repo": "https://github.com/AlpinooO/3dJS-pong"
+  }
+]

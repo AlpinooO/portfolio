@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Thèmes clair / sombre — une seule couleur d'accent, deux fonds ===== */
+
+:root,
+[data-theme="light"] {
+  --c-ink: #fafaf9;
+  --c-surface: #ffffff;
+  --c-surface2: #e7e5e0;
+  --c-text: #0a0a0a;
+  --c-muted: #6b6864;
+  --c-accent: #7dd3fc;
+  --c-accent2: #38bdf8;
+}
+
+[data-theme="dark"] {
+  --c-ink: #0a0a0a;
+  --c-surface: #141413;
+  --c-surface2: #2a2a27;
+  --c-text: #fafaf9;
+  --c-muted: #8f8b85;
+  --c-accent: #38bdf8;
+  --c-accent2: #7dd3fc;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink text-offwhite font-body;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.page-shell {
+  position: relative;
+}
+
+.page-transition {
+  animation: page-enter 260ms ease-out both;
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--c-accent) 25%, transparent);
+  color: var(--c-text);
+}
+
+/* ===== Typo signature ===== */
+
+.display-italic {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-optical-sizing: auto;
+}
+
+.index-tag {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--c-muted);
+}
+
+/* ===== Bandeau défilant (stack technique) ===== */
+
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  border-top: 1px solid var(--c-surface2);
+  border-bottom: 1px solid var(--c-surface2);
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+
+.marquee-track {
+  display: inline-flex;
+  animation: marquee 26s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ===== Cartes éditoriales : coins nets, numéro d'index ===== */
+
+.editorial-card {
+  position: relative;
+  border: 1px solid var(--c-surface2);
+}
+
+.editorial-card .index-number {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-size: 2.25rem;
+  color: var(--c-surface2);
+  line-height: 1;
+}
+
+@keyframes rise {
+  from { transform: translateY(24px) scaleY(0.85); opacity: 0; }
+  to { transform: translateY(0) scaleY(1); opacity: 1; }
+}
+
+.block-rise {
+  animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-origin: bottom;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.caret-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
