@@ -18,6 +18,17 @@ export default function Nav() {
     setOpen(false);
   }, [location.pathname]);
 
+  // Handler pour déclencher le téléchargement du fichier statique
+  const handleDownloadCV = () => {
+    const link = document.createElement("a");
+    link.href = "/CV/CV_Malgonne.pdf"; // Encode l'é de Léo pour éviter les soucis d'URL
+    link.download = "CV_Malgonne.pdf";
+    link.target = "_blank";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <header className="fixed top-0 inset-x-0 z-50 backdrop-blur bg-ink/80 border-b border-surface2">
       <nav className="max-w-5xl mx-auto flex items-center justify-between px-6 py-4">
@@ -54,7 +65,7 @@ export default function Nav() {
             proximity={250}
             autoAnimate={false}
             className="hidden sm:inline-flex"
-            onClick={() => window.location.assign("/api/cv")}
+            onClick={handleDownloadCV}
           >
             CV ↓
           </SpecularButton>
@@ -105,7 +116,7 @@ export default function Nav() {
               proximity={250}
               autoAnimate={false}
               className="w-full justify-center mt-2"
-              onClick={() => window.location.assign("/api/cv")}
+              onClick={handleDownloadCV}
             >
               Télécharger le CV ↓
             </SpecularButton>
