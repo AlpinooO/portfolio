@@ -24,10 +24,19 @@ app.use((req, res, next) => {
   next();
 });
 
-const allowedOrigins = (process.env.CORS_ORIGIN || "http://localhost,http://localhost:5173")
-  .split(",")
-  .map((origin) => origin.trim())
-  .filter(Boolean);
+// Ajout des domaines de production dans les origines autorisées
+const defaultOrigins = [
+  "http://localhost",
+  "http://localhost:5173",
+  "http://leo-malgonne.fr",
+  "https://leo-malgonne.fr",
+  "http://www.leo-malgonne.fr",
+  "https://www.leo-malgonne.fr"
+];
+
+const allowedOrigins = process.env.CORS_ORIGIN
+  ? process.env.CORS_ORIGIN.split(",").map((origin) => origin.trim()).filter(Boolean)
+  : defaultOrigins;
 
 app.use(
   cors({
