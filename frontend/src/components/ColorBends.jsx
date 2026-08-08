@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import './ColorBends.css';
 
@@ -15,7 +16,7 @@ uniform int uTransparent;
 uniform float uScale;
 uniform float uFrequency;
 uniform float uWarpStrength;
-uniform vec2 uPointer;
+uniform vec2 uPointer; // in NDC [-1,1]
 uniform float uMouseInfluence;
 uniform float uParallax;
 uniform float uNoise;
@@ -55,8 +56,8 @@ void main() {
             vec2 r = sin(1.5 * (s.yx * uFrequency) + 2.0 * cos(s * uFrequency));
             float m0 = length(r + sin(5.0 * r.y * uFrequency - 3.0 * t + float(i)) / 4.0);
             float kBelow = clamp(uWarpStrength, 0.0, 1.0);
-            float kMix = pow(kBelow, 0.3);
-            float gain = 1.0 + max(uWarpStrength - 1.0, 0.0);
+            float kMix = pow(kBelow, 0.3); // strong response across 0..1
+            float gain = 1.0 + max(uWarpStrength - 1.0, 0.0); // allow >1 to amplify displacement
             vec2 disp = (r - s) * kBelow;
             vec2 warped = s + disp * gain;
             float m1 = length(warped + sin(5.0 * warped.y * uFrequency - 3.0 * t + float(i)) / 4.0);
@@ -312,5 +313,5 @@ export default function ColorBends({
     };
   }, []);
 
-  return <div ref={containerRef} className={`color-bends-container ${className || ''}`.trim()} style={style} />;
+  return <div ref={containerRef} className={`color-bends-container ${className}`} style={style} />;
 }

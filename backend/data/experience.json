@@ -3,7 +3,7 @@
     "company": "Levaral",
     "role": "Stage Développeur Full Stack",
     "period": "Février 2026 – Juin 2026",
-    "stack": ["WordPress", "Node.js", "SQL", "Docker"],
+    "stack": ["WordPress", "Node.js", "SQL", "Docker", "Figma", "Github"],
     "missions": [
       "Développement d'un site vitrine WordPress et d'un site intranet en Node.js",
       "Phase de préproduction : design UI/UX, recherche de composants",
