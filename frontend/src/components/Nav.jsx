@@ -13,7 +13,7 @@ const links = [
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
-
+a
   useEffect(() => {
     setOpen(false);
   }, [location.pathname]);

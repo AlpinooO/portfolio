@@ -10,6 +10,8 @@ services:
       - PORT=5000
     expose:
       - "5000"
+    networks:
+      - proxy-net
 
   frontend:
     build:
@@ -21,3 +23,9 @@ services:
       - "8080:80"
     depends_on:
       - backend
+    networks:
+      - proxy-net
+
+networks:
+  proxy-net:
+    external: true
