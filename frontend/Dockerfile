@@ -1,23 +1,17 @@
-# Étape 1 : Build du code
-FROM node:20-alpine AS builder
-
+# Étape 1 : Build du frontend
+FROM node:18-alpine AS builder
 WORKDIR /app
-
 COPY package*.json ./
-RUN npm ci
-
+RUN npm install
 COPY . .
 RUN npm run build
 
-# Étape 2 : Serveur web de production
+# Étape 2 : Serveur Nginx
 FROM nginx:alpine
-
-# Copie du build frontend vers le répertoire Nginx
+# Copier la configuration personnalisée Nginx
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Copier les fichiers statiques du build
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Configuration du reverse proxy Nginx
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
 EXPOSE 80
-
 CMD ["nginx", "-g", "daemon off;"]
