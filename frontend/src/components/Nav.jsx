@@ -6,7 +6,7 @@ import SpecularButton from "./SpecularButton.jsx";
 const links = [
   { to: "/projets", label: "Projets" },
   { to: "/professionnel", label: "Professionnel" },
-  { to: "/profil", label: "Profil" },
+  { to: "/profil", label: "Compétences" },
   { to: "/contact", label: "Contact" },
 ];
 
@@ -18,10 +18,10 @@ export default function Nav() {
     setOpen(false);
   }, [location.pathname]);
 
-  // Handler pour déclencher le téléchargement du fichier statique
+
   const handleDownloadCV = () => {
     const link = document.createElement("a");
-    link.href = "/CV/CV_Malgonne.pdf"; // Encode l'é de Léo pour éviter les soucis d'URL
+    link.href = "/CV/CV_Malgonne.pdf"; 
     link.download = "CV_Malgonne.pdf";
     link.target = "_blank";
     document.body.appendChild(link);
