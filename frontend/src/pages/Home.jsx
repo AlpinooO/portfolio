@@ -1,5 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import Aurora from "../components/Aurora.jsx";
+import BorderGlow from "../components/BorderGlow.jsx";
+import CardSwap, { Card } from "../components/CardSwap.jsx";
 import SpecularButton from "../components/SpecularButton.jsx";
 
 const stackTicker = [
@@ -12,16 +14,19 @@ const teasers = [
     to: "/projets",
     label: "Projets",
     desc: "Intranet RH, mini-jeu HTML5, et un serveur Minecraft de 500+ mods.",
+    badge: "Projet",
   },
   {
     to: "/professionnel",
     label: "Professionnel",
     desc: "Mes stages en développement web et gestion de projet.",
+    badge: "Professionnel",
   },
   {
     to: "/profil",
     label: "Profil",
     desc: "Langages, frameworks, méthodologies — ma boîte à outils.",
+    badge: "Profil",
   },
 ];
 
@@ -90,40 +95,71 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Bandeau défilant
-      <div className="marquee py-4 mb-16">
-        <div className="marquee-track">
-          {[...stackTicker, ...stackTicker].map((item, i) => (
-            <span
-              key={i}
-              className="font-mono text-sm text-muted px-6 flex items-center gap-6"
-            >
-              {item} <span className="text-cyan">✦</span>
-            </span>
-          ))}
-        </div>
-      </div> */}
+
 
       <section className="px-6 pb-24 max-w-5xl mx-auto">
-        <div className="grid sm:grid-cols-3 gap-px bg-surface2 border border-surface2">
-          {teasers.map((t, i) => (
-            <Link
-              key={t.to}
-              to={t.to}
-              className="editorial-card bg-ink p-6 hover:bg-surface transition-colors group"
-            >
-              <span className="index-number block mb-6">
-                0{i + 1}
-              </span>
-              <h2 className="font-semibold text-lg mb-2 group-hover:text-cyan transition-colors">
-                <h2 className="font-semibold text-lg mb-2 group-hover:text-cyan transition-colors flex items-center gap-1">
-  {t.label}
-  <span className="group-hover:translate-x-1 transition-transform">→</span>
-</h2>
-              </h2>
-              <p className="text-muted text-sm leading-relaxed">{t.desc}</p>
-            </Link>
-          ))}
+        <div className="relative min-h-[560px] sm:min-h-[600px] overflow-visible rounded-[24px] border border-surface2 bg-[color:var(--c-surface)] px-6 py-8 sm:px-10 sm:py-10">
+          <div className="max-w-lg">
+            <p className="index-tag mb-4">CE QUE JE PRODUIT</p>
+            <h2 className="font-semibold text-2xl sm:text-3xl mb-4">
+              PROJET,PROFESSIONNEL,COMPÉTENCES
+            </h2>
+            <p className="text-muted leading-relaxed">
+              (Les cartes se déplacent en rotation, mais chaque carte reste un lien actif vers sa page.)
+            </p>
+          </div>
+
+          <CardSwap
+            width={340}
+            height={420}
+            cardDistance={58}
+            verticalDistance={84}
+            delay={2600}
+            pauseOnHover
+            skewAmount={5}
+            easing="elastic"
+          >
+            {teasers.map((t) => (
+              <Card
+                key={t.to}
+                customClass="cursor-pointer p-4"
+                onClick={() => navigate(t.to)}
+                role="link"
+                tabIndex={0}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    navigate(t.to);
+                  }
+                }}
+              >
+                <BorderGlow
+                  className="w-full h-full"
+                  edgeSensitivity={26}
+                  glowColor="198 100 72"
+                  backgroundColor="var(--c-surface)"
+                  borderRadius={24}
+                  glowRadius={38}
+                  glowIntensity={1.05}
+                  coneSpread={24}
+                  colors={['#c084fc', '#f472b6', '#38bdf8']}
+                >
+                  <div className="h-full w-full p-6 sm:p-7 flex flex-col justify-between">
+                    <span className="card__index uppercase tracking-[0.16em] text-sm sm:text-base">{t.badge}</span>
+                    <div>
+                      <h3 className="font-semibold text-2xl mb-3 transition-colors">
+                        {t.label}
+                      </h3>
+                      <p className="text-muted text-sm leading-relaxed">{t.desc}</p>
+                    </div>
+                    <span className="inline-flex items-center gap-2 text-sm text-cyan font-mono">
+                      Ouvrir <span>→</span>
+                    </span>
+                  </div>
+                </BorderGlow>
+              </Card>
+            ))}
+          </CardSwap>
         </div>
       </section>
     </>
