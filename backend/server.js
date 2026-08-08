@@ -31,7 +31,9 @@ const defaultOrigins = [
   "http://leo-malgonne.fr",
   "https://leo-malgonne.fr",
   "http://www.leo-malgonne.fr",
-  "https://www.leo-malgonne.fr"
+  "https://www.leo-malgonne.fr",
+  "http://86.247.98.228",        
+  "https://86.247.98.228"        
 ];
 
 const allowedOrigins = process.env.CORS_ORIGIN
@@ -41,7 +43,13 @@ const allowedOrigins = process.env.CORS_ORIGIN
 app.use(
   cors({
     origin(origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
+      if (!origin) return callback(null, true);
+
+      const isAllowed = allowedOrigins.includes(origin) || 
+                        origin.includes("leo-malgonne.fr") || 
+                        origin.includes("86.247.98.228");
+
+      if (isAllowed) {
         return callback(null, true);
       }
       return callback(new Error("Origine non autorisée"));
