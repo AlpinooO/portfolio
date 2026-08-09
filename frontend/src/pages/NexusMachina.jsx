@@ -2,6 +2,16 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/nexus-machina.css";
 import CountUp from "../components/CountUp.jsx";
+import AccordionGallery from "../components/AccordionGallery.jsx";
+
+const galleryItems = [
+  { image: "/images/NexusMachina/1.png", label: "Base d'un joueur" },
+  { image: "/images/NexusMachina/2.png", label: "Taverne en construction" },
+  { image: "/images/NexusMachina/3.png", label: "Petit port de pêche" },
+  { image: "/images/NexusMachina/4.png", label: "Structure a coté d'une maison d'un joueur" },
+  { image: "/images/NexusMachina/5.png", label: "Avion Aeronautics avec le monorail en fond" },
+  { image: "/images/NexusMachina/6.png", label: "Shop en plein air avec plusieurs armures" },
+];
 
 export default function NexusMachina() {
   const [data, setData] = useState(null);
@@ -74,7 +84,24 @@ export default function NexusMachina() {
               <h2 className="mc-section-title">📖 Description</h2>
               <p className="mc-body">{data.description}</p>
             </div>
+<div className="mb-10">
+  <h2 className="mc-section-title mb-6">Ce que les joueurs on accomplis</h2>
+  <AccordionGallery
+    items={galleryItems}
+    defaultIndex={0}
+    expandRatio={0.52}
+    trigger="hover"
+    height={360}
+    gap={6}
+    radius={0}
+    accentColor="#d4a94a"
+    overlayColor="#0d0c10"
+    duration={0.4}
+    grayscale={true}
+  />
+</div>
 
+<div className="mc-divider" />
             {/* ── ACHIEVEMENTS ── */}
             <h2 className="mc-section-title mb-6">🏆 Succès débloqués</h2>
             <div className="mc-achievements-grid mb-10">

@@ -3,9 +3,9 @@
   "tagline": "Serveur communautaire NeoForge — 500+ mods",
   "period": "2025 — en cours",
   "stack": ["NeoForge 1.21.1", "KubeJS", "JavaScript", "Gestion de serveur Minecraft"],
-  "description": "Conception, administration et optimisation d'un serveur Minecraft modé communautaire regroupant plus de 500 mods, avec une équipe de joueurs actifs au quotidien.",
+  "description": "Conception, administration et optimisation d'un serveur Minecraft modé communautaire regroupant plus de 512 mods dont create Aeronotics et Iron's Spellbook, avec une équipe de joueurs actifs au quotidien.",
   "stats": [
-    { "label": "Mods installés", "value": "500+" },
+    { "label": "Mods installés", "value": "512" },
     { "label": "Version", "value": "NeoForge 1.21.1" },
     { "label": "Statut", "value": "En cours de test" }
   ],
