@@ -2,8 +2,8 @@ import SpotlightCard from './SpotlightCard.jsx';
 
 export default function ProjectCard({ project, index }) {
   return (
-    <SpotlightCard className="h-full" spotlightColor="rgba(0, 229, 255, 0.16)">
-      <article className="editorial-card p-6 bg-transparent border-0 shadow-none">
+    <SpotlightCard className="h-full">
+      <article className="editorial-card p-6 bg-[var(--surface)] border-0 shadow-none">
         <div className="flex items-start justify-between mb-4">
           <span className="index-number">
             {String(index).padStart(2, "0")}
@@ -15,14 +15,14 @@ export default function ProjectCard({ project, index }) {
 
         <h3 className="font-semibold text-xl mb-3">{project.title}</h3>
 
-        <p className="text-muted text-sm leading-relaxed mb-4">
+        <p className=" text-sm leading-relaxed mb-4">
           {project.description}
         </p>
 
         <ul className="space-y-1.5 mb-4">
           {project.highlights.map((h) => (
             <li key={h} className="text-sm flex gap-2">
-              <span className="text-cyan">▸</span>
+              <span className="text-accent">▸</span>
               <span>{h}</span>
             </li>
           ))}

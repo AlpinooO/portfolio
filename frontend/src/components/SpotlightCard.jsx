@@ -11,7 +11,7 @@ const SpotlightCard = ({ children, className = '', spotlightColor = 'rgba(255, 2
 
     divRef.current.style.setProperty('--mouse-x', `${x}px`);
     divRef.current.style.setProperty('--mouse-y', `${y}px`);
-    divRef.current.style.setProperty('--spotlight-color', spotlightColor);
+    // divRef.current.style.setProperty('--spotlight-color', spotlightColor);
   };
 
   return (

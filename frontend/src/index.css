@@ -13,6 +13,8 @@
   --c-muted: #6b6864;
   --c-accent: #7dd3fc;
   --c-accent2: #38bdf8;
+  --spotlight-color: rgba(0, 150, 180, 0.12);
+  --surface: #ffffff;
 }
 
 [data-theme="dark"] {
@@ -23,6 +25,8 @@
   --c-muted: #8f8b85;
   --c-accent: #38bdf8;
   --c-accent2: #7dd3fc;
+  --spotlight-color: rgba(0, 229, 255, 0.08);
+  --surface: #141413;
 }
 
 html {
