@@ -128,7 +128,6 @@ export default function Home() {
             </p>
           </div>
 
-          {/* CardSwap — z-10 pour rester au-dessus du fond */}
           <div className="absolute bottom-0 right-0 z-10">
  <CardSwap
     width={340}

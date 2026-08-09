@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/nexus-machina.css";
+import CountUp from "../components/CountUp.jsx";
 
 export default function NexusMachina() {
   const [data, setData] = useState(null);
@@ -15,10 +16,8 @@ export default function NexusMachina() {
   return (
     <div className="mc-theme px-6 py-16">
       <div className="max-w-4xl mx-auto">
-        <Link
-          to="/projets"
-          className="mc-tag inline-block mb-8 hover:opacity-80"
-        >
+
+        <Link to="/projets" className="mc-tag inline-block mb-10 hover:opacity-80">
           ← Retour aux projets
         </Link>
 
@@ -28,61 +27,78 @@ export default function NexusMachina() {
 
         {data && (
           <>
-            <div className="flex flex-col items-center text-center mb-10">
-              <img
-                src="/images/nexus-machina-logo.png"
-                alt="Emblème Nexus Machina"
-                className="mc-logo mb-4"
-              />
-              <h1 className="mc-heading text-2xl sm:text-3xl mb-2">
-                {data.title}
-              </h1>
-              <p className="text-white/80 text-2xl">{data.tagline}</p>
+            {/* ── HERO ── */}
+            <div className="mc-hero mb-10">
+              <div className="mc-hero-inner">
+                <img
+                  src="/images/nexus-machina-logo.png"
+                  alt="Emblème Nexus Machina"
+                  className="mc-logo"
+                />
+                <div className="mc-hero-text">
+                  <p className="mc-eyebrow">{data.period}</p>
+                  <h1 className="mc-heading mc-title">{data.title}</h1>
+                  <p className="mc-tagline">{data.tagline}</p>
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {data.stack.map((tech) => (
+                      <span key={tech} className="mc-tag">{tech}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="mc-divider" />
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-10">
+            {/* ── STATS ── */}
+            <div className="mc-stats-row mb-10">
               {data.stats.map((stat) => (
-                <div key={stat.label} className="mc-slot p-4 text-center">
-                  <p className="text-white/60 text-sm mb-1">{stat.label}</p>
-                  <p className="text-white text-xl">{stat.value}</p>
+                <div key={stat.label} className="mc-stat-card">
+                  <p className="mc-stat-label">{stat.label}</p>
+                  {stat.label === "Mods installés" ? (
+                    <p className="mc-stat-value">
+                      <CountUp from={0} to={500} duration={2} />
+                      <span>+</span>
+                    </p>
+                  ) : (
+                    <p className="mc-stat-value">{stat.value}</p>
+                  )}
                 </div>
               ))}
             </div>
 
+            <div className="mc-divider" />
+
+            {/* ── DESCRIPTION ── */}
             <div className="mc-panel p-6 mb-10">
-              <h2 className="mc-heading text-sm mb-4">📖 Description</h2>
-              <p className="text-2xl leading-relaxed">{data.description}</p>
+              <h2 className="mc-section-title">📖 Description</h2>
+              <p className="mc-body">{data.description}</p>
             </div>
 
-            <div className="mc-panel p-6 mb-10">
-              <h2 className="mc-heading text-sm mb-4">🛠 Stack technique</h2>
-              <div className="flex flex-wrap gap-2">
-                {data.stack.map((tech) => (
-                  <span key={tech} className="mc-tag">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <h2 className="mc-heading text-sm mb-4">🏆 Succès débloqués</h2>
-            <div className="grid sm:grid-cols-2 gap-4 mb-10">
-              {data.achievements.map((a) => (
-                <div key={a.title} className="mc-achievement">
-                  <p className="mc-achievement-title">{a.title}</p>
-                  <p className="text-xl leading-snug">{a.description}</p>
+            {/* ── ACHIEVEMENTS ── */}
+            <h2 className="mc-section-title mb-6">🏆 Succès débloqués</h2>
+            <div className="mc-achievements-grid mb-10">
+              {data.achievements.map((a, i) => (
+                <div key={a.title} className="mc-achievement-card">
+                  <div className="mc-achievement-header">
+                    <span className="mc-achievement-num">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <p className="mc-achievement-title">{a.title}</p>
+                  </div>
+                  <p className="mc-body mt-3">{a.description}</p>
                 </div>
               ))}
             </div>
 
+            {/* ── COMPÉTENCES ── */}
             <div className="mc-panel p-6">
-              <h2 className="mc-heading text-sm mb-4">⚡ Compétences forgées</h2>
-              <ul className="grid sm:grid-cols-2 gap-2">
+              <h2 className="mc-section-title mb-6">⚡ Compétences forgées</h2>
+              <ul className="mc-skills-grid">
                 {data.crafting_skills.map((skill) => (
-                  <li key={skill} className="text-2xl flex items-center gap-2">
-                    <span className="text-mc-gold">▪</span> {skill}
+                  <li key={skill} className="mc-skill-item">
+                    <span className="mc-skill-icon">▪</span>
+                    <span>{skill}</span>
                   </li>
                 ))}
               </ul>
