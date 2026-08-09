@@ -67,8 +67,7 @@ export default function NexusMachina() {
                   <p className="mc-stat-label">{stat.label}</p>
                   {stat.label === "Mods installés" ? (
                     <p className="mc-stat-value">
-                      <CountUp from={0} to={500} duration={2} />
-                      <span>+</span>
+                      <CountUp from={0} to={512} duration={2} />
                     </p>
                   ) : (
                     <p className="mc-stat-value">{stat.value}</p>
