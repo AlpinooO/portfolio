@@ -21,8 +21,8 @@ export default function Nav() {
 
   const handleDownloadCV = () => {
     const link = document.createElement("a");
-    link.href = "/CV/CV_Malgonne.pdf"; 
-    link.download = "CV_Malgonne.pdf";
+    link.href = "/CV/CV_Malgonne_Leo.pdf"; 
+    link.download = "CV_Malgonne_Leo.pdf";
     link.target = "_blank";
     document.body.appendChild(link);
     link.click();

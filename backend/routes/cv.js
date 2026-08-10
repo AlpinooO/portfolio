@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 
 router.get("/", (req, res) => {
   // Chemin vers le CV dans le dossier assets/ à la racine du backend
-  const filePath = path.join(__dirname, "../../frontend/public/CV/CV_Malgonne.pdf");
+  const filePath = path.join(__dirname, "../../frontend/public/CV/CV_Malgonne_Leo.pdf");
 
   // Vérification de l'existence du fichier
   if (!fs.existsSync(filePath)) {
@@ -17,7 +17,7 @@ router.get("/", (req, res) => {
   }
 
   // Téléchargement du fichier
-  res.download(filePath, "../../frontend/public/CV/CV_Malgonne.pdf", (err) => {
+  res.download(filePath, "../../frontend/public/CV/CV_Malgonne_Leo.pdf", (err) => {
     if (err && !res.headersSent) {
       res.status(500).send("Erreur lors du téléchargement");
     }
